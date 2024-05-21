@@ -14,22 +14,14 @@ const createOrderIntoDB = async (orderData: IOrder) => {
 
   // Check if there is enough inventory
   if (product.inventory.quantity < quantity) {
-    // Update the inStock property if needed
-    if (product.inventory.inStock) {
-      product.inventory.inStock = false;
-      await product.save();
-    }
-
     throw new Error("Insufficient quantity available in inventory");
   }
 
   // Reduce the inventory quantity
   product.inventory.quantity -= quantity;
 
-  // Update the inStock property if quantity goes to zero
-  if (product.inventory.quantity === 0) {
-    product.inventory.inStock = false;
-  }
+  // Update the inStock property based on the new quantity
+  product.inventory.inStock = product.inventory.quantity > 0;
 
   await product.save();
 
