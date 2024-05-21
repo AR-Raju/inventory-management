@@ -30,7 +30,6 @@ const createProduct = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
@@ -56,7 +55,6 @@ const getAllProducts = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
@@ -83,7 +81,6 @@ const getSingleProduct = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
@@ -118,7 +115,6 @@ const updateSingleProduct = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
@@ -145,7 +141,6 @@ const deleteSingleProduct = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
@@ -174,7 +169,6 @@ const getProductsBySearchTerm = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
