@@ -18,12 +18,14 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     success: false,
     message: "Route not found",
   });
+  next();
 });
 
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(500).json({ success: false, error: "Internal Server Error" });
+  next();
 });
 
 export default app;
