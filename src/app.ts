@@ -4,23 +4,9 @@ import { orderRoutes } from "./app/modules/order/order.route";
 import { productRoutes } from "./app/modules/product/product.route";
 const app: Application = express();
 
-// Middleware to log requests
-// app.use((req: Request, res: Response, next: NextFunction) => {
-//   console.log("Received request:", req.method, req.url);
-//   console.log("Before express.json() Request body:", req.body);
-//   next();
-// });
-
 // parser
 app.use(express.json());
 app.use(cors());
-
-// Middleware to log requests
-// app.use((req: Request, res: Response, next: NextFunction) => {
-//   console.log("Received request:", req.method, req.url);
-//   console.log("After express.json() Request body:", req.body);
-//   next();
-// });
 
 // application routes
 app.use("/api/products", productRoutes);
