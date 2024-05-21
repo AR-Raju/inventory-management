@@ -28,7 +28,6 @@ const createOrder = async (req: Request, res: Response) => {
     res.status(400).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
@@ -54,7 +53,6 @@ const getAllOrders = async (req: Request, res: Response) => {
     res.status(400).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
@@ -84,7 +82,6 @@ const getOrderByEmail = async (req: Request, res: Response) => {
     res.status(400).json({
       success: false,
       message: err.message || "Something went wrong!",
-      errorMessage: err,
     });
   }
 };
