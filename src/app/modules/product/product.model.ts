@@ -11,19 +11,14 @@ const InventorySchema = new Schema({
   inStock: { type: Boolean, required: true },
 });
 
-const ProductSchema = new Schema<IProduct>(
-  {
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    price: { type: Number, required: true },
-    category: { type: String, required: true },
-    tags: { type: [String], required: true },
-    variants: { type: [VariantSchema], required: true },
-    inventory: { type: InventorySchema, required: true },
-  },
-  {
-    _id: false,
-  }
-);
+const ProductSchema = new Schema<IProduct>({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  price: { type: Number, required: true },
+  category: { type: String, required: true },
+  tags: { type: [String], required: true },
+  variants: { type: [VariantSchema], required: true },
+  inventory: { type: InventorySchema, required: true },
+});
 
 export const Product = model("Product", ProductSchema);
