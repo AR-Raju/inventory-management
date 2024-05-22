@@ -25,9 +25,19 @@ const createOrder = async (req: Request, res: Response) => {
       data: createdOrder,
     });
   } catch (err: any) {
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
     res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };
@@ -50,9 +60,19 @@ const getAllOrders = async (req: Request, res: Response) => {
       data: ordersData,
     });
   } catch (err: any) {
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
     res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };
@@ -87,9 +107,19 @@ const getOrderByEmail = async (req: Request, res: Response) => {
       data: ordersData,
     });
   } catch (err: any) {
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
     res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };

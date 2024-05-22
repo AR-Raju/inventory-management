@@ -27,9 +27,19 @@ const createProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err: any) {
-    res.status(500).json({
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
+    res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };
@@ -52,9 +62,19 @@ const getAllProducts = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err: any) {
-    res.status(500).json({
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
+    res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };
@@ -78,9 +98,19 @@ const getSingleProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err: any) {
-    res.status(500).json({
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
+    res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };
@@ -112,9 +142,19 @@ const updateSingleProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err: any) {
-    res.status(500).json({
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
+    res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };
@@ -138,9 +178,19 @@ const deleteSingleProduct = async (req: Request, res: Response) => {
       data: null,
     });
   } catch (err: any) {
-    res.status(500).json({
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
+    res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };
@@ -166,9 +216,19 @@ const getProductsBySearchTerm = async (req: Request, res: Response) => {
       data: products,
     });
   } catch (err: any) {
-    res.status(500).json({
+    let errorMessage = err.message || "Something went wrong!";
+
+    if (typeof err.message === "string") {
+      try {
+        errorMessage = JSON.parse(err.message);
+      } catch (parseError) {
+        errorMessage = "Something went wrong!";
+      }
+    }
+
+    res.status(400).json({
       success: false,
-      message: err.message || "Something went wrong!",
+      message: errorMessage,
     });
   }
 };
