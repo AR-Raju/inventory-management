@@ -35,7 +35,16 @@ const getAllOrdersFromDB = async () => {
 };
 
 const getOrderByEmailFromDB = async (email: string) => {
-  const result = await Order.find({ email: email.toLowerCase() });
+  if (!email) {
+    throw new Error("Email parameter is required");
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    throw new Error("Invalid email format");
+  }
+
+  const result = await Order.find({ email: email }).exec();
   return result;
 };
 

@@ -72,6 +72,14 @@ const getOrderByEmail = async (req: Request, res: Response) => {
       });
     }
 
+    if (ordersData.length === 0) {
+      return res.status(200).json({
+        success: true,
+        message: "No orders found for the provided email",
+        data: [],
+      });
+    }
+
     // send response
     res.status(200).json({
       success: true,
