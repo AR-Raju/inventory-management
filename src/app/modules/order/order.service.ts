@@ -1,9 +1,15 @@
+import { Types } from "mongoose";
 import { Product } from "../product/product.model";
 import { IOrder } from "./order.interface";
 import { Order } from "./order.model";
 
 const createOrderIntoDB = async (orderData: IOrder) => {
   const { productId, quantity } = orderData;
+
+  // Validate the productId
+  if (!Types.ObjectId.isValid(productId)) {
+    throw new Error("Invalid product ID format");
+  }
 
   const product = await Product.findOne({ _id: productId });
 

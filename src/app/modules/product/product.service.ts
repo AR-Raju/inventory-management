@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { IProduct } from "./product.interface";
 import { Product } from "./product.model";
 
@@ -12,6 +13,10 @@ const getAllProductsFromDB = async () => {
 };
 
 const getSingleProductFromDB = async (id: string) => {
+  // Validate the productId
+  if (!Types.ObjectId.isValid(id)) {
+    throw new Error("Invalid product ID format");
+  }
   const result = await Product.findById(id);
   return result;
 };
@@ -20,11 +25,19 @@ const updateSingleProductIntoDB = async (
   id: string,
   update: Partial<IProduct>
 ) => {
+  // Validate the productId
+  if (!Types.ObjectId.isValid(id)) {
+    throw new Error("Invalid product ID format");
+  }
   const result = await Product.findByIdAndUpdate(id, update, { new: true });
   return result;
 };
 
 const deleteSingleProductFromDB = async (id: string) => {
+  // Validate the productId
+  if (!Types.ObjectId.isValid(id)) {
+    throw new Error("Invalid product ID format");
+  }
   const result = await Product.findByIdAndDelete(id);
   return result;
 };
