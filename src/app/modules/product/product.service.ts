@@ -37,6 +37,7 @@ const getProductsBySearchTermFromDB = async (searchPamams: string) => {
         $or: [
           { name: { $regex: new RegExp(searchPamams as string, "i") } },
           { description: { $regex: new RegExp(searchPamams as string, "i") } },
+          { category: { $regex: new RegExp(searchPamams as string, "i") } },
         ],
       },
     },
